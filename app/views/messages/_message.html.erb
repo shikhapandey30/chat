@@ -1,0 +1,12 @@
+<li>
+  <div class="row">
+    <div class="<%= user.id == message.user_id ? 'message-sent' : 'message-received' %>">
+      <%= message.body %>
+    </div>
+  </div>
+</li>
+<%= form_for [conversation, conversation.messages.new], remote: true do |f| %>
+  <%= f.hidden_field :user_id, value: user.id %>
+  <%= f.text_area :body, class: "form-control" %>
+  <%= f.submit "Send", class: "btn btn-success" %>
+<% end %>
